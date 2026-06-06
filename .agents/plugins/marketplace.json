@@ -1,0 +1,41 @@
+{
+  "name": "awesome-agent-skills",
+  "interface": {
+    "displayName": "Awesome Agent Skills"
+  },
+  "plugins": [
+    {
+      "name": "research-and-grill",
+      "source": {
+        "source": "local",
+        "path": "./plugins/research-and-grill"
+      },
+      "policy": {
+        "installation": "AVAILABLE"
+      },
+      "category": "Learning"
+    },
+    {
+      "name": "pr-narrative",
+      "source": {
+        "source": "local",
+        "path": "./plugins/pr-narrative"
+      },
+      "policy": {
+        "installation": "AVAILABLE"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "pattern-enforcer",
+      "source": {
+        "source": "local",
+        "path": "./plugins/pattern-enforcer"
+      },
+      "policy": {
+        "installation": "AVAILABLE"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

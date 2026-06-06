@@ -1,0 +1,14 @@
+{
+  "name": "research-and-grill",
+  "version": "1.3.0",
+  "description": "Research any topic from the web, then get grilled with Socratic questions. Scales question depth to how much was researched.",
+  "author": {
+    "name": "Smeet Agrawal",
+    "email": "smeetagrawal2003@gmail.com"
+  },
+  "homepage": "https://github.com/awesome-agent-skills/skills/tree/main/plugins/research-and-grill",
+  "repository": "https://github.com/awesome-agent-skills/skills",
+  "license": "MIT",
+  "keywords": ["research", "learning", "quiz", "socratic", "education"],
+  "skills": "./skills/"
+}

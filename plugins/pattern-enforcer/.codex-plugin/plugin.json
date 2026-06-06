@@ -1,0 +1,14 @@
+{
+  "name": "pattern-enforcer",
+  "version": "1.1.0",
+  "description": "Scan the codebase for existing patterns before implementing anything. Enforces consistency across UI components, error handling, tests, and naming. Never introduces a new way of doing something that already exists.",
+  "author": {
+    "name": "Smeet Agrawal",
+    "email": "smeetagrawal2003@gmail.com"
+  },
+  "homepage": "https://github.com/awesome-agent-skills/skills/tree/main/plugins/pattern-enforcer",
+  "repository": "https://github.com/awesome-agent-skills/skills",
+  "license": "MIT",
+  "keywords": ["consistency", "patterns", "ui", "refactoring", "codebase", "conventions"],
+  "skills": "./skills/"
+}
