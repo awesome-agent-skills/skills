@@ -23,15 +23,25 @@ claude plugin install pr-narrative
 claude plugin install pattern-enforcer
 ```
 
-### OpenAI Codex / Cursor / Gemini CLI
-
-Copy the skill folder directly into your skills directory:
+### OpenAI Codex CLI
 
 ```bash
-git clone https://github.com/awesome-agent-skills/skills.git
-cp -r skills/plugins/research-and-grill ~/.codex/skills/   # Codex
-cp -r skills/plugins/pr-narrative ~/.codex/skills/
-cp -r skills/plugins/pattern-enforcer ~/.codex/skills/
+/plugins
+```
+Search for the skill name and select **Install Plugin**.
+
+### Cursor
+
+```text
+/add-plugin research-and-grill
+```
+
+Or search for the skill name in the Cursor plugin marketplace.
+
+### Gemini CLI
+
+```bash
+gemini extensions install https://github.com/awesome-agent-skills/skills
 ```
 
 ## Usage
