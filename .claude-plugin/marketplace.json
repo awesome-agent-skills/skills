@@ -1,0 +1,21 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "awesome-agent-skills",
+  "description": "Open-source agent skills for Claude Code, Codex, Cursor, Gemini CLI and more",
+  "owner": {
+    "name": "Smeet Agrawal",
+    "email": "smeetagrawal2003@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "research-and-grill",
+      "description": "Research any topic from the web, then get grilled with Socratic questions. Scales question depth to how much was researched.",
+      "author": {
+        "name": "Smeet Agrawal"
+      },
+      "category": "learning",
+      "source": "./plugins/research-and-grill",
+      "homepage": "https://github.com/awesome-agent-skills/skills/tree/main/plugins/research-and-grill"
+    }
+  ]
+}

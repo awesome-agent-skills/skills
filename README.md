@@ -2,37 +2,29 @@
 
 Open-source agent skills for Claude Code, OpenAI Codex, Cursor, Gemini CLI, and any tool that supports the [Agent Skills open standard](https://agentskills.io).
 
+## Install via CLI (recommended)
+
+**Claude Code:**
+```bash
+claude plugin marketplace add awesome-agent-skills/skills
+claude plugin install research-and-grill
+```
+
+**OpenAI Codex:**
+```bash
+codex plugin marketplace add awesome-agent-skills/skills
+codex plugin install research-and-grill
+```
+
 ## Skills
 
-| Skill | Description | Tools |
-|-------|-------------|-------|
-| [research-and-grill](./research-and-grill/) | Research any topic from the web, then get grilled on it with Socratic questions | Claude Code, Codex, Cursor |
-
-## Installation
-
-### Claude Code
-```bash
-cp -r research-and-grill ~/.claude/skills/
-```
-
-### OpenAI Codex
-```bash
-cp -r research-and-grill ~/.codex/skills/
-```
-
-### Any skill
-```bash
-# Clone the repo
-git clone https://github.com/awesome-agent-skills/skills.git
-
-# Copy the skill you want
-cp -r skills/<skill-name> ~/.claude/skills/   # Claude Code
-cp -r skills/<skill-name> ~/.codex/skills/    # Codex
-```
+| Skill | Description | Category |
+|-------|-------------|----------|
+| [research-and-grill](./plugins/research-and-grill/) | Research any topic from the web, then get grilled with Socratic questions | Learning |
 
 ## Usage
 
-Once installed, invoke any skill by name:
+Once installed, invoke by name:
 
 ```
 /research-and-grill quantum computing
