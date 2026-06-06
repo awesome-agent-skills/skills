@@ -17,5 +17,16 @@
       "source": "./plugins/research-and-grill",
       "homepage": "https://github.com/awesome-agent-skills/skills/tree/main/plugins/research-and-grill"
     }
+  ,
+    {
+      "name": "pr-narrative",
+      "description": "Generate a human PR title and description from git diff and commit history. Creates or updates the PR on GitHub automatically.",
+      "author": {
+        "name": "Smeet Agrawal"
+      },
+      "category": "workflow",
+      "source": "./plugins/pr-narrative",
+      "homepage": "https://github.com/awesome-agent-skills/skills/tree/main/plugins/pr-narrative"
+    }
   ]
 }

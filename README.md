@@ -21,6 +21,7 @@ codex plugin install research-and-grill
 | Skill | Description | Category |
 |-------|-------------|----------|
 | [research-and-grill](./plugins/research-and-grill/) | Research any topic from the web, then get grilled with Socratic questions | Learning |
+| [pr-narrative](./plugins/pr-narrative/) | Generate a human PR title + description from git history. Creates or updates the PR automatically | Workflow |
 
 ## Usage
 

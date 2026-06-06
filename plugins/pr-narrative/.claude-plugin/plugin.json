@@ -1,0 +1,13 @@
+{
+  "name": "pr-narrative",
+  "version": "1.0.0",
+  "description": "Generate a human PR title and description from git diff and commit history. Creates or updates the PR on GitHub automatically.",
+  "author": {
+    "name": "Smeet Agrawal",
+    "email": "smeetagrawal2003@gmail.com"
+  },
+  "homepage": "https://github.com/awesome-agent-skills/skills/tree/main/plugins/pr-narrative",
+  "repository": "https://github.com/awesome-agent-skills/skills",
+  "license": "MIT",
+  "keywords": ["git", "pull-request", "pr", "github", "description", "workflow"]
+}
