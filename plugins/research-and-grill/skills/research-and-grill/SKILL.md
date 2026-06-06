@@ -28,16 +28,14 @@ If the topic is specific enough (e.g. "deploying Rails apps to EC2", "React Serv
 
 ## Phase 0: Context Scan
 
-Before researching, silently infer which repo files are relevant based on the topic, then read them:
+Silently locate the primary dependency manifest in the current directory (any of `package.json`, `Gemfile`, `pyproject.toml`, `go.mod`, `Cargo.toml`, `pom.xml`). Read it to extract the tech stack and key libraries.
 
-| Topic mentions | Files to check |
-|----------------|---------------|
-| deployment / infra / cloud | `Dockerfile`, `.github/workflows/`, `deploy/`, `*.yml` CI configs |
-| database / models / schema | `schema.rb`, `models/`, `migrations/`, `prisma/schema.prisma` |
-| frontend / UI / components | `package.json`, `components/`, `pages/`, `src/` |
-| auth / security / permissions | auth-related files, middleware, session config |
-| background jobs / queues | `Sidekiq`, `Celery`, `Bull` config files |
-| any topic | Always check `CLAUDE.md` + primary dependency file (`package.json`, `Gemfile`, `pyproject.toml`, `requirements.txt`, `go.mod`) |
+Then identify the topic's domain and locate the primary config or schema file for that domain:
+- **Deployment / infra** → `Dockerfile`, `.github/workflows/`, `deploy/`, CI config files
+- **Database / models** → primary schema file (`schema.rb`, `prisma/schema.prisma`, `models/`, `migrations/`)
+- **Frontend / UI** → component directory (`components/`, `pages/`, `src/`)
+- **Auth / security** → auth middleware or config files
+- **Background jobs** → job/worker config files
 
 Extract: tech stack, key libraries, what the user has been building. Store as `repo_context`.
 
@@ -45,27 +43,27 @@ If no repo or no relevant files exist, skip silently — do not mention it.
 
 ## Phase 1: Research
 
-Use WebSearch and WebFetch:
-- **Quick mode**: run 3–5 searches across different angles, fetch 3–5 source pages
-- **Deep mode**: run 10–15 searches across different angles, fetch 10–15 source pages
+Use WebSearch and WebFetch. Before searching, state the 5 angles you will cover, then search one per angle:
+1. Core definition and fundamentals
+2. Key mechanisms and how it works
+3. Common misconceptions and pitfalls
+4. Real-world applications and tradeoffs
+5. Recent developments or alternatives
 
-Search angles:
-- Core definition and fundamentals
-- Key concepts and mechanisms
-- Common misconceptions
-- Real-world applications or examples
-- Recent developments (if relevant)
+Depth:
+- **Quick mode**: 3–5 searches, fetch 3–5 source pages
+- **Deep mode**: 10–15 searches, fetch 10–15 source pages
 
-Extract **key concepts worth reasoning about** — not just facts, but ideas, tradeoffs, and relationships. Synthesize into a structured summary grouped by concept.
+Extract **key concepts worth reasoning about** — ideas, tradeoffs, and relationships, not just facts. Synthesize into a structured summary grouped by concept.
 
 ## Phase 2: Show Summary
 
 Present findings as a clear summary with a numbered list of key concepts to be covered.
 
-If `repo_context` has a genuine connection to the research topic, add one line at the bottom:
+If `repo_context` is relevant to the research topic, add one line:
 > *"I see you're working on [X] — a few questions will connect these concepts to that."*
 
-Only include this line if the connection is real and specific. Skip it if the topic is unrelated to the stack.
+Only include this line if the connection is genuine and specific. If it is not relevant, omit it entirely — and do not blend repo_context into Phase 3 questions either.
 
 End with: *"Ready to be grilled? Type 'yes' to start. You can type 'skip [concept number]' at any point to skip a topic."*
 
@@ -74,15 +72,8 @@ End with: *"Ready to be grilled? Type 'yes' to start. You can type 'skip [concep
 **Ask exactly one question at a time. Wait for the user's response before asking the next. Never batch questions.**
 
 - Number of questions scales with depth: quick → ~5, deep → ~10–15
-- **Socratic style** — never ask "what is X?", instead ask:
-  - "Why does X happen rather than Y?"
-  - "What would break if X weren't true?"
-  - "How does X relate to what we said about Z?"
-  - "What assumption are you making when you say that?"
-- **2–3 questions** (not all) naturally blend in `repo_context` when there's a genuine analogy:
-  - *"You're using Sidekiq — how is the concept of superposition similar to how a job queue holds multiple pending states?"*
-  - *"Your app uses PostgreSQL transactions — how does that relate to atomicity in distributed systems?"*
-  - Only draw the analogy if it genuinely aids understanding. Never force a connection.
+- **Socratic style** — ask questions that require the user to reason about tradeoffs, failure modes, or relationships between concepts. Never ask definitional recall questions ("what is X?")
+- If `repo_context` is relevant (established in Phase 2), blend 2–3 questions naturally into the codebase context. If it is not relevant, ask no repo-grounded questions at all.
 - After each answer:
   - Acknowledge what was right
   - Gently correct misconceptions with explanation
@@ -106,5 +97,4 @@ If fewer than 3 questions were answered, note the session was too short for a me
 - If the user says "skip [concept]" before grilling starts, remove that concept from the question queue entirely
 - If the user says "skip" during grilling, move to the next concept immediately
 - If the user says "stop", jump straight to the mastery report
-- Never force a repo analogy — only use `repo_context` when it genuinely helps understanding
 - Do not mention which files you scanned unless the user asks

@@ -1,6 +1,6 @@
 {
   "name": "pattern-enforcer",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Scan the codebase for existing patterns before implementing anything. Enforces consistency across UI components, error handling, tests, and naming. Never introduces a new way of doing something that already exists.",
   "author": {
     "name": "Smeet Agrawal",

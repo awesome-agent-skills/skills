@@ -19,37 +19,35 @@ Also activates automatically when Claude is about to implement anything in the f
 
 ## Phase 0: Detect Domain
 
-Classify the request into one or more domains:
+Identify the abstraction layer of what is being added, then map it to a domain:
 
-| Request mentions | Domain |
-|-----------------|--------|
-| button, dropdown, modal, form, input, select, checkbox, table, card, toast, dialog | **UI** |
-| try/catch, error, exception, 404, 500, validation, raise, throw | **Error handling** |
-| test, spec, describe, it, expect, assert, mock, fixture | **Tests** |
-| new file, new function, new class, new variable, new hook, new service, new controller | **Naming** |
+| Abstraction layer | Domain |
+|-------------------|--------|
+| Visual element the user interacts with (button, dropdown, modal, form, input, table, card, toast, dialog) | **UI** |
+| Code that handles failure, validates input, or formats errors for users or logs | **Error handling** |
+| Code whose purpose is to verify other code's behavior | **Tests** |
+| A new file, function, class, variable, hook, service, or controller being named | **Naming** |
 
-A single request can trigger multiple domains. Run each that applies.
+A single request can span multiple domains (e.g. "write a test for the error handler" → both Tests and Error handling). Run the scan for each domain that applies. If ambiguous, list the detected domains and confirm with the user before scanning.
 
 ## Phase 1: Scan
 
 ### UI Domain
-Search for existing usage of the same element type:
+Search for existing usage of the same element type. Adjust keywords to match the specific element being added:
 ```bash
-grep -r "dropdown\|<Select\|<Combobox\|<Listbox" --include="*.tsx" --include="*.jsx" --include="*.vue" -l
-grep -r "modal\|<Dialog\|<Modal" --include="*.tsx" --include="*.jsx" -l
-# adjust keywords to match the element being added
+grep -r "dropdown\|<Select\|<Combobox\|<Listbox" --include="*.tsx" --include="*.jsx" --include="*.vue" --include="*.svelte" -l
 ```
-Read 2–3 of the found files to understand:
+Sort results by match frequency. Read the top 2–3 files by occurrence count to understand:
 - Which component/library is used (shadcn, MUI, custom, etc.)
 - How it's imported
 - What props are passed
-- How it's styled (Tailwind classes, CSS modules, inline)
+- How it's styled (Tailwind, CSS modules, inline)
 
 ### Error Handling Domain
 ```bash
 grep -r "catch\|rescue\|except\|AppError\|ApiError\|raise\|throw new" --include="*.ts" --include="*.rb" --include="*.py" -l | head -10
 ```
-Read 2–3 found files to understand:
+Read the top 2–3 files by occurrence count to understand:
 - Error class hierarchy (custom vs native)
 - How errors are logged
 - What user-facing error messages look like
@@ -57,10 +55,9 @@ Read 2–3 found files to understand:
 
 ### Tests Domain
 ```bash
-# Find tests for the same layer as what's being tested
 find . -name "*.test.*" -o -name "*.spec.*" -o -name "*_test.*" | head -20
 ```
-Read the closest existing test file (same directory or same module) to understand:
+Prioritize the test file closest to the code being tested (same directory or same module). Read it to understand:
 - Test framework and imports
 - `describe`/`it`/`test` structure
 - How mocks are set up
@@ -69,13 +66,10 @@ Read the closest existing test file (same directory or same module) to understan
 
 ### Naming Domain
 ```bash
-# Sample file names in the same directory
 ls -la <target-directory>
-
-# Sample function/class names in similar files
 grep -r "export function\|export class\|export const\|def \|class " <adjacent-files> | head -20
 ```
-Extract: casing convention (camelCase, snake_case, PascalCase, kebab-case), prefix/suffix patterns (e.g. `useX` for hooks, `XService` for services, `XController`).
+Extract: casing convention (camelCase, snake_case, PascalCase, kebab-case) and prefix/suffix patterns (e.g. `useX` for hooks, `XService`, `XController`).
 
 ## Phase 2: Assess Findings
 
@@ -85,13 +79,10 @@ Extract: casing convention (camelCase, snake_case, PascalCase, kebab-case), pref
 Proceed to Phase 3 immediately.
 
 **Multiple patterns found:**
-> "Found two approaches:
-> 1. `<Select>` from shadcn/ui — used in 6 places (settings, profile, filters)
-> 2. Native `<select>` — used in 2 older places (legacy forms)
->
-> Which should I use for this?"
-
-Wait for user choice, then proceed to Phase 3.
+- Count occurrences of each pattern
+- If counts differ: use the higher-count pattern automatically
+  > "Found two approaches: `<Select>` (6 uses) vs native `<select>` (2 uses). Using `<Select>` — more widely adopted."
+- If counts are equal: ask the user to choose, then proceed to Phase 3 with their answer
 
 **No pattern found:**
 > "No existing [element type] found in this codebase. This will be the first one.
@@ -119,6 +110,5 @@ After implementing, add a brief note:
 - Never create a new error class if an existing one covers the case
 - Never write a test in a different style from adjacent tests
 - Never name a file/function using a different casing from its neighbors
-- If two patterns exist and the user doesn't specify, always pick the more widely used one (higher count wins)
 - Do not refactor existing inconsistencies unless the user explicitly asks — just match the dominant pattern
 - Always show which files you found the pattern in so the user can verify
