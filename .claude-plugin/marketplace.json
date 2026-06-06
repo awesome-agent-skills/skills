@@ -27,6 +27,16 @@
       "category": "workflow",
       "source": "./plugins/pr-narrative",
       "homepage": "https://github.com/awesome-agent-skills/skills/tree/main/plugins/pr-narrative"
+    },
+    {
+      "name": "pattern-enforcer",
+      "description": "Scan the codebase for existing patterns before implementing anything. Enforces consistency across UI components, error handling, tests, and naming.",
+      "author": {
+        "name": "Smeet Agrawal"
+      },
+      "category": "workflow",
+      "source": "./plugins/pattern-enforcer",
+      "homepage": "https://github.com/awesome-agent-skills/skills/tree/main/plugins/pattern-enforcer"
     }
   ]
 }

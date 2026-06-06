@@ -22,6 +22,7 @@ codex plugin install research-and-grill
 |-------|-------------|----------|
 | [research-and-grill](./plugins/research-and-grill/) | Research any topic from the web, then get grilled with Socratic questions | Learning |
 | [pr-narrative](./plugins/pr-narrative/) | Generate a human PR title + description from git history. Creates or updates the PR automatically | Workflow |
+| [pattern-enforcer](./plugins/pattern-enforcer/) | Scan codebase for existing patterns before implementing. Enforces consistency across UI, errors, tests, and naming | Workflow |
 
 ## Usage
 
