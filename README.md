@@ -25,10 +25,16 @@ claude plugin install pattern-enforcer
 
 ### OpenAI Codex CLI
 
+Skills are not yet in the official Codex marketplace. Install manually:
+
 ```bash
-/plugins
+git clone https://github.com/awesome-agent-skills/skills.git
+cp -r skills/plugins/research-and-grill ~/.codex/skills/
+cp -r skills/plugins/pr-narrative ~/.codex/skills/
+cp -r skills/plugins/pattern-enforcer ~/.codex/skills/
 ```
-Search for the skill name and select **Install Plugin**.
+
+Once listed in the official Codex marketplace, you'll be able to install via `/plugins`.
 
 ### Cursor
 
