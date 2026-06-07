@@ -1,0 +1,14 @@
+{
+  "name": "react-conventions",
+  "version": "1.0.0",
+  "description": "Build React data fetching, mutations, and forms the right way. Matches the codebase's existing approach; prescribes React Query and React Hook Form + Zod only when no pattern exists. Adds Next.js client/server boundary guidance when App Router is detected.",
+  "author": {
+    "name": "Smeet Agrawal",
+    "email": "smeetagrawal2003@gmail.com"
+  },
+  "homepage": "https://github.com/awesome-agent-skills/skills/tree/main/plugins/react-conventions",
+  "repository": "https://github.com/awesome-agent-skills/skills",
+  "license": "MIT",
+  "keywords": ["react", "react-query", "react-hook-form", "zod", "nextjs", "forms", "data-fetching", "conventions"],
+  "skills": "./skills/"
+}

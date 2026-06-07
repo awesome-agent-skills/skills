@@ -16,8 +16,7 @@
       "category": "learning",
       "source": "./plugins/research-and-grill",
       "homepage": "https://github.com/awesome-agent-skills/skills/tree/main/plugins/research-and-grill"
-    }
-  ,
+    },
     {
       "name": "pr-narrative",
       "description": "Generate a human PR title and description from git diff and commit history. Creates or updates the PR on GitHub automatically.",
@@ -37,6 +36,26 @@
       "category": "workflow",
       "source": "./plugins/pattern-enforcer",
       "homepage": "https://github.com/awesome-agent-skills/skills/tree/main/plugins/pattern-enforcer"
+    },
+    {
+      "name": "react-conventions",
+      "description": "Build React data fetching, mutations, and forms the right way. Matches the codebase's existing approach; prescribes React Query and React Hook Form + Zod only when no pattern exists.",
+      "author": {
+        "name": "Smeet Agrawal"
+      },
+      "category": "workflow",
+      "source": "./plugins/react-conventions",
+      "homepage": "https://github.com/awesome-agent-skills/skills/tree/main/plugins/react-conventions"
+    },
+    {
+      "name": "ui-completeness",
+      "description": "Verification pass after building a React UI component. Sweeps for the four data states (loading, error, empty, success) and responsive issues, then fixes gaps using the codebase's existing components.",
+      "author": {
+        "name": "Smeet Agrawal"
+      },
+      "category": "workflow",
+      "source": "./plugins/ui-completeness",
+      "homepage": "https://github.com/awesome-agent-skills/skills/tree/main/plugins/ui-completeness"
     }
   ]
 }

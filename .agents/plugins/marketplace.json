@@ -36,6 +36,28 @@
         "installation": "AVAILABLE"
       },
       "category": "Productivity"
+    },
+    {
+      "name": "react-conventions",
+      "source": {
+        "source": "local",
+        "path": "./plugins/react-conventions"
+      },
+      "policy": {
+        "installation": "AVAILABLE"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "ui-completeness",
+      "source": {
+        "source": "local",
+        "path": "./plugins/ui-completeness"
+      },
+      "policy": {
+        "installation": "AVAILABLE"
+      },
+      "category": "Productivity"
     }
   ]
 }

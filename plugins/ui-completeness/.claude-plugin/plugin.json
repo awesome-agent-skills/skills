@@ -1,0 +1,13 @@
+{
+  "name": "ui-completeness",
+  "version": "1.0.0",
+  "description": "Verification pass after building a React UI component. Sweeps for the four data states (loading, error, empty, success) and responsive issues, then fixes gaps using the codebase's existing state components. Skips the four-states check on components with no async data.",
+  "author": {
+    "name": "Smeet Agrawal",
+    "email": "smeetagrawal2003@gmail.com"
+  },
+  "homepage": "https://github.com/awesome-agent-skills/skills/tree/main/plugins/ui-completeness",
+  "repository": "https://github.com/awesome-agent-skills/skills",
+  "license": "MIT",
+  "keywords": ["react", "ui", "loading-state", "error-state", "empty-state", "responsive", "audit", "frontend"]
+}
